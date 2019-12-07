@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'nip',
-            'gol_id',
+            // 'gol_id',
             'golongan',
             'sk_no',
             //'sk_tanggal',

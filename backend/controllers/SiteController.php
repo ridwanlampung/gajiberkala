@@ -7,6 +7,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 
+use common\Models\RiwayatGajiBerkala;
+use common\Models\RiwayatGolRuang;
+
 /**
  * Site controller
  */
@@ -60,7 +63,33 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $tahun = date("Y");
+        $bulan = date("m");
+
+        $tahun1 = date("Y",strtotime("+1 month"));
+        $bulan1 = date("m",strtotime("+1 month"));
+
+        $np_tahun = date("Y",strtotime("-4 year"));
+        $np_bulan = date("m",strtotime("-4 year"));
+
+        $gaji_berkala = RiwayatGajiBerkala::find()->where('YEAR(kenaikan_berikutnya) = '.$tahun.' AND MONTH(kenaikan_berikutnya) = '.$bulan)->all();
+        $gaji_berkala_bulan_depan = RiwayatGajiBerkala::find()->where('YEAR(kenaikan_berikutnya) = '.$tahun1.' AND MONTH(kenaikan_berikutnya) = '.$bulan1)->all();
+
+        $GolRuangTahun = RiwayatGolRuang::find()->where('YEAR(sk_tanggal) = '.$np_tahun)->all();
+        $GolRuangTahunBulan = RiwayatGolRuang::find()->where('YEAR(sk_tanggal) = '.$np_tahun.' AND MONTH(sk_tanggal) = '.$np_bulan)->all();
+
+        return $this->render('index',[
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+            'tahun1' => $tahun1,
+            'bulan1' => $bulan1,
+            'np_tahun' => $np_tahun,
+            'np_bulan' => $np_bulan,
+            'gaji_berkala' => $gaji_berkala,
+            'gaji_berkala_bulan_depan' => $gaji_berkala_bulan_depan,
+            'GolRuangTahun' => $GolRuangTahun,
+            'GolRuangTahunBulan' => $GolRuangTahunBulan,
+        ]);
     }
 
     /**

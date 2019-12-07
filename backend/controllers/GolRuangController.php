@@ -69,7 +69,9 @@ class GolRuangController extends Controller
         $model = new RiwayatGolRuang();
         $RefGolongan = ArrayHelper::map(RefGolongan::find()->select('id, nama')->all(), 'id', 'nama');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->setGolRuang();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -91,7 +93,9 @@ class GolRuangController extends Controller
         $model = $this->findModel($id);
         $RefGolongan = ArrayHelper::map(RefGolongan::find()->select('id, nama')->all(), 'id', 'nama');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->setGolRuang();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

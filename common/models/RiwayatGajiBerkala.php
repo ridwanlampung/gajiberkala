@@ -82,5 +82,10 @@ class RiwayatGajiBerkala extends \yii\db\ActiveRecord
         // berikutnya
         $this->kenaikan_berikutnya = date('Y-m-d', strtotime('+2 years', strtotime('now')));
     }
+    
+    public function getDataUtama()
+    {
+        return $this->hasOne(DataUtama::className(), ['nip' => 'nip']);
+    }
 
 }

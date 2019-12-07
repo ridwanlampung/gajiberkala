@@ -62,4 +62,15 @@ class RiwayatGolRuang extends \yii\db\ActiveRecord
     public function setDefault()
     {
     }
+
+    public function setGolRuang()
+    {
+        $model = RefGolongan::find()->where(['id'=>$this->gol_id])->one();
+        $this->golongan = $model->nama_pangkat;
+    }
+    
+    public function getDataUtama()
+    {
+        return $this->hasOne(DataUtama::className(), ['nip' => 'nip']);
+    }
 }
