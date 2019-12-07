@@ -2,6 +2,9 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
+use yii\helpers\Html;
+
 $this->title = 'Dashboard';
 ?>
 <div class="row">
@@ -17,6 +20,7 @@ $this->title = 'Dashboard';
                         <th>Nip</th>
                         <th>Nama</th>
                         <th>Tgl Gaji Berkala</th>
+                        <th>Cetak</th>
                     </tr>
                     <?php
                         $no=0;
@@ -28,7 +32,8 @@ $this->title = 'Dashboard';
                                 <td>".$gb->nip."</td>
                                 <td>".$gb->dataUtama->nama."</td>
                                 <td>".$gb->kenaikan_berikutnya."</td>
-                            </tr>
+                                <td>".Html::a('Cetak Pengantar', ['gaji-berkala/cetak', 'nip' => $gb->nip], ['class' => 'btn btn-primary', 'target'=>'_blank'])."</td>
+                                </tr>
                             ";
                         }
                     ?>

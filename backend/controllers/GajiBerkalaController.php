@@ -8,7 +8,9 @@ use backend\models\GajiBerkalaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\Models\DataUtama;
 
+use kartik\mpdf\Pdf;
 /**
  * GajiBerkalaController implements the CRUD actions for RiwayatGajiBerkala model.
  */
@@ -123,5 +125,56 @@ class GajiBerkalaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionCetak($nip){
+        $tanggal = $this->tanggal();
+        $model = DataUtama::find()->where(['nip'=>$nip ])->one();
+        
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_UTF8, // leaner size using standard fonts
+            'format' => Pdf::FORMAT_FOLIO,
+            'content' => $this->renderPartial('cetak',[
+                'model' => $model,
+                'tanggal' => $tanggal,
+            ]),
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+        'cssInline' => '.kv-heading-1{font-size:6px}', 
+
+            'options' => [
+                'title' => 'Cetak Biodata',
+            //'subject' => 'Generating PDF files via yii2-mpdf extension has never been easy'
+            ],
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            'methods' => [
+                // 'SetHeader' => ['Dicetak dari : <i>simpegbkd.sumutprov.go.id</i> '],
+                // 'SetFooter' => ['|Badan Kepegawaian Daerah|{PAGENO}'],
+            ]
+        ]);
+        return $pdf->render();
+    }
+
+    public function tanggal(){
+        $bulans = [
+            1 => 'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+        ];
+
+        $tahun = date('Y');
+        $bulan = $bulans[date('m')];
+        $tanggal = date('d');
+
+        return $tanggal." ".$bulan." ".$tahun;
     }
 }
