@@ -33,7 +33,6 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'nomor_sk')->textInput(['maxlength' => true]) ?>
 
-
     <?= $form->field($model, 'tmt_sk')->widget(DatePicker::className(),
                                                       [
                                                           'type' => DatePicker::TYPE_INPUT,
@@ -60,7 +59,15 @@ use kartik\date\DatePicker;
                                                       ],
                                                   ]);?>
 
-    <?= $form->field($model, 'kenaikan_berikutnya')->textInput() ?>
+    <?= $form->field($model, 'kenaikan_berikutnya')->widget(DatePicker::className(),
+                                                  [
+                                                      'type' => DatePicker::TYPE_INPUT,
+                                                      'pluginOptions' => 
+                                                      [
+                                                          'autoclose'=>true,
+                                                          'format' => 'yyyy-mm-dd',
+                                                      ],
+                                                  ]);?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

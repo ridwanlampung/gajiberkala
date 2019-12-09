@@ -64,7 +64,7 @@ use yii\helpers\Url;
       <br/>
       <br/>
       <br/>
-      <b>DAVID HELGOD PARDEDE S.IP MSP</b> <br/>
+      <b>Nuryansyah Putra SSTP M.Si</b> <br/>
       Penata Tk.I <br/>
       NIP : 19880227 200701 1 001
     </td>
