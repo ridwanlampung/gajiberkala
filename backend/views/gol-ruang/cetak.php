@@ -57,7 +57,7 @@ use yii\helpers\Url;
 <br/>
 
 <p>Sehubungan dengan Surat Ka.BKD Kab Langkat Nomor : 823-1976/BKD/2019 Tanggal 28 Nopember 2019 tentang penyelesaian usul kenaikan pangkat PNS periode 1 April 2019.</p>
-<p>Untuk itu kiranya Bapak dapat memberikan kenaikan pangkat kepada MUHAMMAD SABRI dari Pengatur Muda (II/b) ke Pengatur (II/c), dan sebagai bahan pertimbangan Bapak, turut kami lampirkan berkas permohonan kenaikan pangkat sebagai berikut :</p>
+<p>Untuk itu kiranya Bapak dapat memberikan kenaikan pangkat kepada <?= $model->nama ?> , dan sebagai bahan pertimbangan Bapak, turut kami lampirkan berkas permohonan kenaikan pangkat sebagai berikut :</p>
 
 <ol>
   <li>Foto Copy SK Pangkat Terakhir</li>
