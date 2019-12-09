@@ -65,8 +65,8 @@ use yii\helpers\Url;
       <br/>
       <br/>
       <b>Nuryansyah Putra SSTP M.Si</b> <br/>
-      Penata Tk.I <br/>
-      NIP : 19880227 200701 1 001
+      Pembina Tk.I <br/>
+      NIP : 19760429 199511 1 001
     </td>
   </tr>
 </table>

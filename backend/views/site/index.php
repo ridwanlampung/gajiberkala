@@ -83,6 +83,7 @@ $this->title = 'Dashboard';
                         <th>Nip</th>
                         <th>Nama</th>
                         <th>Tgl Kenaikan Pangkat</th>
+                        <th>Cetak</th>
                     </tr>
                     <?php
                         $no=0;
@@ -94,7 +95,8 @@ $this->title = 'Dashboard';
                                 <td>".$grt->nip."</td>
                                 <td>".$grt->dataUtama->nama."</td>
                                 <td>".$grt->sk_tanggal."</td>
-                            </tr>
+                                <td>".Html::a('Cetak Pengantar', ['gol-ruang/cetak', 'nip' => $gb->nip], ['class' => 'btn btn-primary', 'target'=>'_blank'])."</td>
+                                </tr>
                             ";
                         }
                     ?>
