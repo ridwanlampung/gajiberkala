@@ -11,7 +11,7 @@ $this->title = 'Dashboard';
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3>Gaji Berkala Bulan ini (<?= 'bulan '.$bulan.' tahun '.$tahun ?>)</h3>
+                <h3>Gaji Berkala Bulan ini (<?= 'Bulan '.$bulan.' tahun '.$tahun ?>)</h3>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
@@ -43,7 +43,7 @@ $this->title = 'Dashboard';
 
         <div class="box">
             <div class="box-header">
-                <h3>Gaji Berkala Bulan Depan (<?= 'bulan '.$bulan1.' tahun '.$tahun1 ?>)</h3>
+                <h3>Gaji Berkala Bulan Depan (<?= 'Bulan '.$bulan1.' tahun '.$tahun1 ?>)</h3>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
