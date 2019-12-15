@@ -11,7 +11,7 @@ $this->title = 'Dashboard';
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3>Gaji Berkala Bulan ini (<?= 'bulan '.$bulan.' tahun '.$tahun ?>)</h3>
+                <h3>Gaji Berkala Bulan ini sedang dikerjakan(<?= 'bulan '.$bulan.' tahun '.$tahun ?>)</h3>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
