@@ -11,11 +11,13 @@ use Yii;
  * @property string $nis
  * @property string $nama
  * @property string $alamat
- * @property int|null $id_kelas
+ * @property int $id_kelas
+ * @property string $tgl_masuk
+ * @property int $gaji_ortu
  *
  * @property TbKelas $kelas
  */
-class TbSiswa extends \yii\db\ActiveRecord
+class TbSiswaAjax extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -31,14 +33,13 @@ class TbSiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nis', 'nama', 'alamat'], 'required'],
-            [['id_kelas'], 'integer'],
+            [['nis', 'nama', 'alamat', 'id_kelas', 'tgl_masuk', 'gaji_ortu'], 'required'],
+            [['id_kelas', 'gaji_ortu'], 'integer'],
+            [['tgl_masuk'], 'safe'],
             [['nis'], 'string', 'max' => 5],
             [['nama'], 'string', 'max' => 50],
             [['alamat'], 'string', 'max' => 100],
             [['id_kelas'], 'exist', 'skipOnError' => true, 'targetClass' => TbKelas::className(), 'targetAttribute' => ['id_kelas' => 'id_kelas']],
-            [['tgl_masuk'], 'string', 'max' => 15],
-            [['gaji_ortu'], 'integer'],
         ];
     }
 
@@ -48,13 +49,13 @@ class TbSiswa extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_siswa' => Yii::t('app', 'Id Siswa'),
-            'nis' => Yii::t('app', 'Nis'),
-            'nama' => Yii::t('app', 'Nama'),
-            'alamat' => Yii::t('app', 'Alamat'),
-            'id_kelas' => Yii::t('app', 'Id Kelas'),
-            'tgl_masuk' => Yii::t('app', 'Tanggal Masuk'),
-            'gaji_ortu' => Yii::t('app', 'Gaji Orang Tua'),
+            'id_siswa' => 'Id Siswa',
+            'nis' => 'Nis',
+            'nama' => 'Nama',
+            'alamat' => 'Alamat',
+            'id_kelas' => 'Id Kelas',
+            'tgl_masuk' => 'Tgl Masuk',
+            'gaji_ortu' => 'Gaji Ortu',
         ];
     }
 

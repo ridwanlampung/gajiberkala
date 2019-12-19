@@ -2,28 +2,29 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\TbSiswa;
+use backend\models\TbSiswaAjax;
 
 /**
- * SiswaSearch represents the model behind the search form of `backend\models\TbSiswa`.
+ * TbSiswaAjaxSearch represents the model behind the search form about `backend\models\TbSiswaAjax`.
  */
-class SiswaSearch extends TbSiswa
+class TbSiswaAjaxSearch extends TbSiswaAjax
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id_siswa', 'id_kelas'], 'integer'],
-            [['nis', 'nama', 'alamat', 'tgl_masuk', 'gaji_ortu'], 'safe'],
+            [['id_siswa', 'id_kelas', 'gaji_ortu'], 'integer'],
+            [['nis', 'nama', 'alamat', 'tgl_masuk'], 'safe'],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -40,9 +41,7 @@ class SiswaSearch extends TbSiswa
      */
     public function search($params)
     {
-        $query = TbSiswa::find();
-
-        // add conditions that should always apply here
+        $query = TbSiswaAjax::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,10 +55,11 @@ class SiswaSearch extends TbSiswa
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id_siswa' => $this->id_siswa,
             'id_kelas' => $this->id_kelas,
+            'tgl_masuk' => $this->tgl_masuk,
+            'gaji_ortu' => $this->gaji_ortu,
         ]);
 
         $query->andFilterWhere(['like', 'nis', $this->nis])

@@ -33,6 +33,11 @@ return [
             'class' => 'mdm\admin\Module',
         ]
     ],
+    'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ]       
+    ],
     // 'as access' => [
     //     'class' => 'mdm\admin\components\AccessControl',
     //     'allowActions' => [
