@@ -30,6 +30,10 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'id_kelas',
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'gaji_ortu',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'tgl_masuk',
